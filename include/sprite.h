@@ -15,14 +15,15 @@ class Sprite{
     string name;
 
     // Animations
-    static float delta_time, previous_time;
     float speed, internal_clock, animation_time;
-    Position delta_position;
+    Position delta_position, target_position;
     void move();
 public:
     Shader shader;
     Position position;
     Size size;
+
+    static float delta_time, previous_time;
 
     Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string name);
 

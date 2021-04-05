@@ -45,6 +45,14 @@ bool isNear(float a, float b, float threshold){
     } else return false;
 }
 
+int RandomNegative(){
+    int num = 0;
+    while (num == 0) {
+        num = rand() % 3 - 1;
+    }
+    return num;
+}
+
 void playFlip();
 
 int main()
@@ -81,13 +89,14 @@ int main()
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    Sprite card("shaders/vertex_triangle.glsl", "shaders/fragment_triangle.glsl", "images/card2.png", "card");
-    card.changeSize(Size(0.25, 0.4));
-    card.position = 0;
-
     srand( ( unsigned int )std::time( nullptr ) );
-    Position pos(0);
+
+    for (int i = 0; i < 30; i++){
+        Sprite card("shaders/vertex_triangle.glsl", "shaders/fragment_triangle.glsl", "images/card2.png", "card");
+        card.changeSize(Size(0.25, 0.5));
+        card.position = Position(RandomFloat(-1, 1), RandomFloat(-1, 1));
+        cards.push_back(card);
+    }
 
     // render loop
     while (!glfwWindowShouldClose(window))
@@ -98,17 +107,13 @@ int main()
         // render
         glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        
-        cout << pos.returnString() << endl;
-        cout << card.position.returnString() << endl << endl;
-        if(card.notAnimated()){
-            playFlip();
-            pos.x = RandomFloat(-1, 1);
-            pos.y = RandomFloat(-1, 1);
-            card.animate(Position(pos.x,pos.y), RandomFloat(0.1, 0.5));
-        }
 
-        card.update();
+        Sprite::delta_time = glfwGetTime() - Sprite::previous_time;
+        Sprite::previous_time = glfwGetTime();
+        
+        for (Sprite &card : cards){
+            card.update();
+        }
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
@@ -148,7 +153,9 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
     }
     if (ENTER.keyPressRelease(GLFW_KEY_ENTER, window)){
-
+        for(Sprite &card : cards){
+            card.animate(Position(-0.75, 0.6), 0.5);
+        }
     }
 }
 

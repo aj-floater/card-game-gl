@@ -58,8 +58,6 @@ float Sprite::previous_time;
 
 void Sprite::update(){
     draw();
-    delta_time = glfwGetTime() - previous_time;
-    previous_time = glfwGetTime();
     move();
 }
 
@@ -92,10 +90,11 @@ void Sprite::move(){
     if (internal_clock < animation_time){
         internal_clock += delta_time;
 
-        position.x += (delta_position.x * delta_time);
-        position.y += (delta_position.y * delta_time);
+        position.x += delta_position.x * delta_time;
+        position.y += delta_position.y * delta_time;
     }
-    else {
+    else if (internal_clock > animation_time) {
+        position = target_position;
         internal_clock = 0;
         delta_position = 0;
         animation_time = 0;
@@ -104,6 +103,7 @@ void Sprite::move(){
 
 void Sprite::animate(Position target_position, float time){
     delta_position = Position((target_position.x-position.x)/time, (target_position.y-position.y)/time);
+    this->target_position = target_position;
     animation_time = time;
 }
 
