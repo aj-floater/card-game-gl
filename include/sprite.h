@@ -13,13 +13,25 @@ using namespace std;
 class Sprite{
     unsigned int VBO, VAO, EBO;
     string name;
+
+    // Animations
+    static float delta_time, previous_time;
+    float speed, internal_clock, animation_time;
+    Position delta_position;
+    void move();
 public:
     Shader shader;
-    Position pos;
+    Position position;
     Size size;
 
     Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string name);
+
+    void update();
     void draw();
+
+    bool notAnimated();
+    void animate(Position target_position, float time);
+
     void changeSize(Size size);
     void changeSize(float size);
 };

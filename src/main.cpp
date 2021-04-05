@@ -9,13 +9,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <irrKlang/irrKlang.h>
 
 #include "sprite.h"
 #include "structures.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window, Sprite &sprite);
+void processInput(GLFWwindow *window);
 
 // settings
 const unsigned int SCR_WIDTH = 900;
@@ -28,6 +29,23 @@ float posX = 0;
 float posY = 0;
 
 ISoundEngine* engine = createIrrKlangDevice();
+
+vector<Sprite> cards;
+
+float RandomFloat(float a, float b) {
+    float random = ((float) rand()) / (float) RAND_MAX;
+    float diff = b - a;
+    float r = random * diff;
+    return a + r;
+}
+
+bool isNear(float a, float b, float threshold){
+    if (a + threshold > b && a - threshold < b){
+        return true;
+    } else return false;
+}
+
+void playFlip();
 
 int main()
 {
@@ -65,22 +83,32 @@ int main()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     Sprite card("shaders/vertex_triangle.glsl", "shaders/fragment_triangle.glsl", "images/card2.png", "card");
-    card.changeSize(Size(0.5, 1));
-    card.changeSize(0.5);
+    card.changeSize(Size(0.25, 0.4));
+    card.position = 0;
 
     srand( ( unsigned int )std::time( nullptr ) );
+    Position pos(0);
 
     // render loop
     while (!glfwWindowShouldClose(window))
     {
         // input
-        processInput(window, card);
+        processInput(window);
 
         // render
         glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        cout << pos.returnString() << endl;
+        cout << card.position.returnString() << endl << endl;
+        if(card.notAnimated()){
+            playFlip();
+            pos.x = RandomFloat(-1, 1);
+            pos.y = RandomFloat(-1, 1);
+            card.animate(Position(pos.x,pos.y), RandomFloat(0.1, 0.5));
+        }
 
-        card.draw();
+        card.update();
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
@@ -114,10 +142,13 @@ void playFlip(){
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-void processInput(GLFWwindow *window, Sprite &sprite)
+void processInput(GLFWwindow *window)
 {
     if (ESCAPE.keyPressRelease(GLFW_KEY_ESCAPE, window)){
         glfwSetWindowShouldClose(window, true);
+    }
+    if (ENTER.keyPressRelease(GLFW_KEY_ENTER, window)){
+
     }
 }
 

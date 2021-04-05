@@ -4,8 +4,10 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     this->name = name;
     this->shader.create(vertexshaderpath, fragmentshaderpath);
 
-    pos.x = 0; pos.y = 0;
-    size.x = 1; size.y = 1;
+    internal_clock = 0;
+    delta_position = 0;
+    position = 0;
+    size = 1;
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
@@ -51,11 +53,21 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     TextureLoader::load(filename, name);
 }
 
+float Sprite::delta_time;
+float Sprite::previous_time;
+
+void Sprite::update(){
+    draw();
+    delta_time = glfwGetTime() - previous_time;
+    previous_time = glfwGetTime();
+    move();
+}
+
 void Sprite::draw(){
     this->shader.use();
     glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, glm::vec3(position.x, position.y, 0));
     trans = glm::scale(trans, glm::vec3(size.x, size.y, 1));
-    trans = glm::translate(trans, glm::vec3(pos.x, pos.y, 0));
 
     unsigned int transformLoc = glGetUniformLocation(this->shader.shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
@@ -74,4 +86,28 @@ void Sprite::changeSize(Size size){
 void Sprite::changeSize(float size){
     this->size.x *= size;
     this->size.y *= size;
+}
+
+void Sprite::move(){
+    if (internal_clock < animation_time){
+        internal_clock += delta_time;
+
+        position.x += (delta_position.x * delta_time);
+        position.y += (delta_position.y * delta_time);
+    }
+    else {
+        internal_clock = 0;
+        delta_position = 0;
+        animation_time = 0;
+    }
+}
+
+void Sprite::animate(Position target_position, float time){
+    delta_position = Position((target_position.x-position.x)/time, (target_position.y-position.y)/time);
+    animation_time = time;
+}
+
+bool Sprite::notAnimated(){
+    if (delta_position == 0) return true;
+    else return false;
 }

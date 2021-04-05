@@ -229,6 +229,8 @@ arm_neon.h
 -
 
 ../include/structures.h
+string
+-
 
 ../include/texture_loader.h
 map
@@ -260,6 +262,8 @@ iostream
 fstream
 -
 string
+-
+vector
 -
 irrKlang/irrKlang.h
 -
