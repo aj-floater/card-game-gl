@@ -15,7 +15,7 @@ class Sprite{
     string name;
 
     // Animations
-    float speed, internal_clock, animation_time;
+    float internal_clock, animation_time;
     Position delta_position, target_position;
     void move();
 public:

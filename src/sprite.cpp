@@ -108,6 +108,6 @@ void Sprite::animate(Position target_position, float time){
 }
 
 bool Sprite::notAnimated(){
-    if (delta_position == 0) return true;
+    if (internal_clock == 0) return true;
     else return false;
 }
