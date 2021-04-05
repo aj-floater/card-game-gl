@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "*.ino": "arduino",
+        "array": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp",
+        "iosfwd": "cpp",
+        "__tuple": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "tuple": "cpp",
+        "iostream": "cpp",
+        "filesystem": "cpp"
+    }
+}
