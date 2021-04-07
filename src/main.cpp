@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <third_parties/glad/glad.h>
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
 
@@ -10,10 +10,10 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <irrKlang/irrKlang.h>
 
 #include "sprite.h"
 #include "structures.h"
+#include "animations/animation_manager.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -23,37 +23,14 @@ const unsigned int SCR_WIDTH = 900;
 const unsigned int SCR_HEIGHT = 675;
 
 using namespace std;
-using namespace irrklang;
 
 float posX = 0;
 float posY = 0;
 
-ISoundEngine* engine = createIrrKlangDevice();
+bool shuffling = false;
+int shufflepos = 0;
+int j = 0;
 
-vector<Sprite> cards;
-
-float RandomFloat(float a, float b) {
-    float random = ((float) rand()) / (float) RAND_MAX;
-    float diff = b - a;
-    float r = random * diff;
-    return a + r;
-}
-
-bool isNear(float a, float b, float threshold){
-    if (a + threshold > b && a - threshold < b){
-        return true;
-    } else return false;
-}
-
-int RandomNegative(){
-    int num = 0;
-    while (num == 0) {
-        num = rand() % 3 - 1;
-    }
-    return num;
-}
-
-void playFlip();
 
 int main()
 {
@@ -91,11 +68,14 @@ int main()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     srand( ( unsigned int )std::time( nullptr ) );
 
+    SoundManager::Init();
+
     for (int i = 0; i < 30; i++){
         Sprite card("shaders/vertex_triangle.glsl", "shaders/fragment_triangle.glsl", "images/card2.png", "card");
-        card.changeSize(Size(0.25, 0.5));
+        card.ChangeSize(Size(0.25, 0.5));
         card.position = Position(RandomFloat(-1, 1), RandomFloat(-1, 1));
-        cards.push_back(card);
+        card.ID = i;
+        AnimationManager::cards.push_back(card);
     }
 
     // render loop
@@ -110,9 +90,11 @@ int main()
 
         Sprite::delta_time = glfwGetTime() - Sprite::previous_time;
         Sprite::previous_time = glfwGetTime();
+
+        AnimationManager::Update();
         
-        for (Sprite &card : cards){
-            card.update();
+        for (Sprite &card : AnimationManager::cards){
+            card.Update();
         }
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -140,12 +122,6 @@ struct Key{
 
 Key ENTER, ESCAPE;
 
-void playFlip(){
-    int num = rand() % 8 + 1;
-    string filename = "audio/FLIP/" + to_string(num) + ".wav";
-    engine->play2D(filename.c_str(), false);
-}
-
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 void processInput(GLFWwindow *window)
 {
@@ -153,9 +129,7 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
     }
     if (ENTER.keyPressRelease(GLFW_KEY_ENTER, window)){
-        for(Sprite &card : cards){
-            card.animate(Position(-0.75, 0.6), 0.5);
-        }
+        AnimationManager::StartShuffleAnimation(true);
     }
 }
 

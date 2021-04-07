@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glad/glad.h>
+#include <third_parties/glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <fstream>
 #include <string>

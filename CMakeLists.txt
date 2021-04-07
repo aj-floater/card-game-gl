@@ -8,7 +8,7 @@ find_package(glfw3 3.3 REQUIRED)
 
 include_directories(./include)
 
-file(GLOB SOURCES "src/*.cpp" "src/*.c")
+file(GLOB SOURCES "src/*.cpp" "src/animations/*.cpp" "src/third_parties/**.c")
 add_executable(Card_Game ${SOURCES})
 file(GLOB LIBRARIES "lib/*.dylib")
 message("LIBRARIES = ${LIBRARIES}")

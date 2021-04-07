@@ -27,6 +27,7 @@ void TextureLoader::load(const char *filename, string name){
     stbi_image_free(data);
     Textures[name] = texture;
 }
+
 unsigned int TextureLoader::get(string name){
     return Textures[name];
 }

@@ -142,32 +142,32 @@ Card_Game/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/build
 .PHONY : Card_Game/fast
 
-src/glad.o: src/glad.c.o
+src/animations/animation_manager.o: src/animations/animation_manager.cpp.o
 
-.PHONY : src/glad.o
+.PHONY : src/animations/animation_manager.o
 
 # target to build an object file
-src/glad.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/glad.c.o
-.PHONY : src/glad.c.o
+src/animations/animation_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o
+.PHONY : src/animations/animation_manager.cpp.o
 
-src/glad.i: src/glad.c.i
+src/animations/animation_manager.i: src/animations/animation_manager.cpp.i
 
-.PHONY : src/glad.i
+.PHONY : src/animations/animation_manager.i
 
 # target to preprocess a source file
-src/glad.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/glad.c.i
-.PHONY : src/glad.c.i
+src/animations/animation_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.i
+.PHONY : src/animations/animation_manager.cpp.i
 
-src/glad.s: src/glad.c.s
+src/animations/animation_manager.s: src/animations/animation_manager.cpp.s
 
-.PHONY : src/glad.s
+.PHONY : src/animations/animation_manager.s
 
 # target to generate assembly for a file
-src/glad.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/glad.c.s
-.PHONY : src/glad.c.s
+src/animations/animation_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.s
+.PHONY : src/animations/animation_manager.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -196,6 +196,33 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/sound.o: src/sound.cpp.o
+
+.PHONY : src/sound.o
+
+# target to build an object file
+src/sound.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/sound.cpp.o
+.PHONY : src/sound.cpp.o
+
+src/sound.i: src/sound.cpp.i
+
+.PHONY : src/sound.i
+
+# target to preprocess a source file
+src/sound.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/sound.cpp.i
+.PHONY : src/sound.cpp.i
+
+src/sound.s: src/sound.cpp.s
+
+.PHONY : src/sound.s
+
+# target to generate assembly for a file
+src/sound.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/sound.cpp.s
+.PHONY : src/sound.cpp.s
+
 src/sprite.o: src/sprite.cpp.o
 
 .PHONY : src/sprite.o
@@ -222,6 +249,33 @@ src/sprite.s: src/sprite.cpp.s
 src/sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/sprite.cpp.s
 .PHONY : src/sprite.cpp.s
+
+src/structures.o: src/structures.cpp.o
+
+.PHONY : src/structures.o
+
+# target to build an object file
+src/structures.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/structures.cpp.o
+.PHONY : src/structures.cpp.o
+
+src/structures.i: src/structures.cpp.i
+
+.PHONY : src/structures.i
+
+# target to preprocess a source file
+src/structures.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/structures.cpp.i
+.PHONY : src/structures.cpp.i
+
+src/structures.s: src/structures.cpp.s
+
+.PHONY : src/structures.s
+
+# target to generate assembly for a file
+src/structures.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/structures.cpp.s
+.PHONY : src/structures.cpp.s
 
 src/texture_loader.o: src/texture_loader.cpp.o
 
@@ -250,6 +304,33 @@ src/texture_loader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/texture_loader.cpp.s
 .PHONY : src/texture_loader.cpp.s
 
+src/third_parties/glad.o: src/third_parties/glad.c.o
+
+.PHONY : src/third_parties/glad.o
+
+# target to build an object file
+src/third_parties/glad.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o
+.PHONY : src/third_parties/glad.c.o
+
+src/third_parties/glad.i: src/third_parties/glad.c.i
+
+.PHONY : src/third_parties/glad.i
+
+# target to preprocess a source file
+src/third_parties/glad.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/third_parties/glad.c.i
+.PHONY : src/third_parties/glad.c.i
+
+src/third_parties/glad.s: src/third_parties/glad.c.s
+
+.PHONY : src/third_parties/glad.s
+
+# target to generate assembly for a file
+src/third_parties/glad.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/third_parties/glad.c.s
+.PHONY : src/third_parties/glad.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -259,18 +340,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Card_Game"
-	@echo "... src/glad.o"
-	@echo "... src/glad.i"
-	@echo "... src/glad.s"
+	@echo "... src/animations/animation_manager.o"
+	@echo "... src/animations/animation_manager.i"
+	@echo "... src/animations/animation_manager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/sound.o"
+	@echo "... src/sound.i"
+	@echo "... src/sound.s"
 	@echo "... src/sprite.o"
 	@echo "... src/sprite.i"
 	@echo "... src/sprite.s"
+	@echo "... src/structures.o"
+	@echo "... src/structures.i"
+	@echo "... src/structures.s"
 	@echo "... src/texture_loader.o"
 	@echo "... src/texture_loader.i"
 	@echo "... src/texture_loader.s"
+	@echo "... src/third_parties/glad.o"
+	@echo "... src/third_parties/glad.i"
+	@echo "... src/third_parties/glad.s"
 .PHONY : help
 
 

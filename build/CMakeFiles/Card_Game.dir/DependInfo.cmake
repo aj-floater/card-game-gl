@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/archiejames/Desktop/cardgame/src/glad.c" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/glad.c.o"
+  "/Users/archiejames/Desktop/cardgame/src/third_parties/glad.c" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -16,8 +16,11 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/local/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/archiejames/Desktop/cardgame/src/animations/animation_manager.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/main.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/main.cpp.o"
+  "/Users/archiejames/Desktop/cardgame/src/sound.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/sound.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/sprite.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/sprite.cpp.o"
+  "/Users/archiejames/Desktop/cardgame/src/structures.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/structures.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/texture_loader.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

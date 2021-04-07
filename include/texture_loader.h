@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-#include <glad/glad.h>
+#include <third_parties/glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <stb_image.h>

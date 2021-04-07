@@ -1,11 +1,14 @@
 #include "sprite.h"
 
-Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string name){
-    this->name = name;
+float Sprite::previous_time, Sprite::delta_time;
+
+Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string sprite_name){
+    this->name = sprite_name;
     this->shader.create(vertexshaderpath, fragmentshaderpath);
 
+    animated = false;
+
     internal_clock = 0;
-    delta_position = 0;
     position = 0;
     size = 1;
 
@@ -43,25 +46,17 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     // note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
 
-    // remember: do NOT unbind the EBO while a VAO is active as the bound element buffer object IS stored in the VAO; keep the EBO bound.
-    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
-    // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
     glBindVertexArray(0);
 
     TextureLoader::load(filename, name);
 }
 
-float Sprite::delta_time;
-float Sprite::previous_time;
-
-void Sprite::update(){
-    draw();
-    move();
+void Sprite::Update(){
+    Draw();
+    Move();
 }
 
-void Sprite::draw(){
+void Sprite::Draw(){
     this->shader.use();
     glm::mat4 trans = glm::mat4(1.0f);
     trans = glm::translate(trans, glm::vec3(position.x, position.y, 0));
@@ -76,38 +71,64 @@ void Sprite::draw(){
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void Sprite::changeSize(Size size){
+void Sprite::ChangeSize(Size size){
     this->size.x *= size.x;
     this->size.y *= size.y;
 }
 
-void Sprite::changeSize(float size){
+void Sprite::ChangeSize(float size){
     this->size.x *= size;
     this->size.y *= size;
 }
 
-void Sprite::move(){
-    if (internal_clock < animation_time){
-        internal_clock += delta_time;
+void Sprite::Move(){
+    if (animation_queue.size() > 0){
+        Animation *a = &animation_queue.at(0);
+        if (!a->started){
+            a->CalculateDeltaPosition(position);
+            animated = true;
+            a->started = true;
+        }
+        if (internal_clock < a->time){
+            internal_clock += delta_time;
 
-        position.x += delta_position.x * delta_time;
-        position.y += delta_position.y * delta_time;
-    }
-    else if (internal_clock > animation_time) {
-        position = target_position;
-        internal_clock = 0;
-        delta_position = 0;
-        animation_time = 0;
+            distance += sqrt(pow(a->delta_position.x * delta_time, 2) + pow(a->delta_position.y * delta_time, 2));
+
+            position.x += a->delta_position.x * delta_time;
+            position.y += a->delta_position.y * delta_time;
+        }
+        else if (internal_clock > a->time) {
+            position.x = a->target_position.x;
+            position.y = a->target_position.y;
+            if (this->sound) {
+                SoundManager::PlaySound("move_card", RandomFloat(50, 75));
+                SoundManager::PlaySound("scrape", RandomFloat(0.01, 1));
+            }
+            internal_clock = 0;
+            animated = false;
+            shuffle_position++;
+            animation_queue.erase(animation_queue.begin()+0);
+        }
     }
 }
 
-void Sprite::animate(Position target_position, float time){
-    delta_position = Position((target_position.x-position.x)/time, (target_position.y-position.y)/time);
-    this->target_position = target_position;
-    animation_time = time;
+void Sprite::GoTo(Position target_position, float time){
+    animation_queue.push_back(Animation(
+        target_position,
+        time
+    ));
+    this->sound = true;
 }
 
-bool Sprite::notAnimated(){
-    if (internal_clock == 0) return true;
+void Sprite::GoTo(Position target_position, float time, bool play_sound){
+    animation_queue.push_back(Animation(
+        target_position,
+        time
+    ));
+    this->sound = play_sound;
+}
+
+bool Sprite::IsAnimated(){
+    if (animated) return true;
     else return false;
 }

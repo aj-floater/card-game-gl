@@ -2,13 +2,15 @@
 
 #include <string>
 
+float RandomFloat(float a, float b);
+
 class Size{
 public:
     float x, y;
+    Size(){}
     Size(float x, float y){
         this->x = x; this->y = y;
     }
-    Size(){}
     void operator=(const float &p){
         this->x = p;
         this->y = p;
@@ -22,17 +24,19 @@ public:
 class Position{
 public:
     float x, y;
+    Position(){}
     Position(float x, float y){
         this->x = x; this->y = y;
     }
     Position(float both){
         this->x = both; this->y = both;
     }
-    Position(){}
+    Position(const Position &p){
+        this->x = p.x; this->y = p.y;
+    }  
     std::string returnString(){
-        return "x: " + to_string(x) + ", y: " + to_string(y);
+        return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
     }
-
     bool operator==(const Position &p){
         if (this->x == p.x && this->y == p.y)
             return true;
