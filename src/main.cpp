@@ -16,7 +16,7 @@
 #include "animations/animation_manager.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window);
+void processInput(GLFWwindow *window, Sprite *card);
 
 // settings
 const unsigned int SCR_WIDTH = 900;
@@ -30,7 +30,6 @@ float posY = 0;
 bool shuffling = false;
 int shufflepos = 0;
 int j = 0;
-
 
 int main()
 {
@@ -78,11 +77,14 @@ int main()
         AnimationManager::cards.push_back(card);
     }
 
+    Sprite card1("shaders/vertex_triangle.glsl", "shaders/fragment_triangle.glsl", "images/card2.png", "card");
+
+
     // render loop
     while (!glfwWindowShouldClose(window))
     {
         // input
-        processInput(window);
+        processInput(window, &card1);
 
         // render
         glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
@@ -92,6 +94,8 @@ int main()
         Sprite::previous_time = glfwGetTime();
 
         AnimationManager::Update();
+
+        // card1.Update();
         
         for (Sprite &card : AnimationManager::cards){
             card.Update();
@@ -123,13 +127,16 @@ struct Key{
 Key ENTER, ESCAPE;
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-void processInput(GLFWwindow *window)
+void processInput(GLFWwindow *window, Sprite *card)
 {
     if (ESCAPE.keyPressRelease(GLFW_KEY_ESCAPE, window)){
         glfwSetWindowShouldClose(window, true);
     }
     if (ENTER.keyPressRelease(GLFW_KEY_ENTER, window)){
         AnimationManager::StartShuffleAnimation(true);
+        // card->GoTo(Position(-0.5, -0.3), 1);
+        // card->GoTo(Position(-0.5, -0.7), 1);
+        // card->GoTo(Position(0.5, -0.2), 1);
     }
 }
 

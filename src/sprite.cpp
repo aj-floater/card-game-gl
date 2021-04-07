@@ -6,9 +6,6 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     this->name = sprite_name;
     this->shader.create(vertexshaderpath, fragmentshaderpath);
 
-    animated = false;
-
-    internal_clock = 0;
     position = 0;
     size = 1;
 
@@ -51,11 +48,6 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     TextureLoader::load(filename, name);
 }
 
-void Sprite::Update(){
-    Draw();
-    Move();
-}
-
 void Sprite::Draw(){
     this->shader.use();
     glm::mat4 trans = glm::mat4(1.0f);
@@ -81,54 +73,51 @@ void Sprite::ChangeSize(float size){
     this->size.y *= size;
 }
 
+void Sprite::Update(){
+    Move();
+    Draw();
+}
+
 void Sprite::Move(){
     if (animation_queue.size() > 0){
-        Animation *a = &animation_queue.at(0);
-        if (!a->started){
-            a->CalculateDeltaPosition(position);
-            animated = true;
-            a->started = true;
-        }
-        if (internal_clock < a->time){
-            internal_clock += delta_time;
+        Apply(&animation_queue[0]);
+        animated = true;
+    }
+    else animated = false;
+}
 
-            distance += sqrt(pow(a->delta_position.x * delta_time, 2) + pow(a->delta_position.y * delta_time, 2));
+bool IsGreater(Position pos1, Position pos2){
+    if (abs(pos1.x) > abs(pos2.x) || abs(pos1.y) > abs(pos2.y)) return true;
+    else return false;
+}
 
-            position.x += a->delta_position.x * delta_time;
-            position.y += a->delta_position.y * delta_time;
-        }
-        else if (internal_clock > a->time) {
-            position.x = a->target_position.x;
-            position.y = a->target_position.y;
-            if (this->sound) {
-                SoundManager::PlaySound("move_card", RandomFloat(50, 75));
-                SoundManager::PlaySound("scrape", RandomFloat(0.01, 1));
-            }
-            internal_clock = 0;
-            animated = false;
-            shuffle_position++;
-            animation_queue.erase(animation_queue.begin()+0);
-        }
+void Sprite::Apply(Animation *animation){
+    if (!animation->applied){
+        animation->delta_position.x = animation->target_position.x - position.x;
+        animation->delta_position.y = animation->target_position.y - position.y;
+        animation->distance = abs(sqrt(pow(animation->target_position.x - position.x, 2) + pow(animation->target_position.y - position.y, 2)));
+        animation->applied = true;
+    }
+    position.x += animation->delta_position.x/animation->time * delta_time;
+    position.y += animation->delta_position.y/animation->time * delta_time;
+    distance_travelled += abs(sqrt(pow(animation->delta_position.x/animation->time * delta_time, 2) + pow(animation->delta_position.y/animation->time * delta_time, 2)));
+    if (distance_travelled >= animation->distance){
+        position.x = animation->target_position.x;
+        position.y = animation->target_position.y;
+        distance_travelled = 0;
+        shuffle_position++;
+        if (animation->sound != "") SoundManager::PlaySound(animation->sound);
+        animation_queue.erase(animation_queue.begin());
     }
 }
 
-void Sprite::GoTo(Position target_position, float time){
-    animation_queue.push_back(Animation(
-        target_position,
-        time
-    ));
-    this->sound = true;
+void Sprite::GoTo(Position target_position, float time, string sound){
+    animation_queue.push_back(Animation(target_position, time, sound));
 }
-
-void Sprite::GoTo(Position target_position, float time, bool play_sound){
-    animation_queue.push_back(Animation(
-        target_position,
-        time
-    ));
-    this->sound = play_sound;
+void Sprite::GoTo(Position target_position, float time){
+    animation_queue.push_back(Animation(target_position, time));
 }
 
 bool Sprite::IsAnimated(){
-    if (animated) return true;
-    else return false;
+    return animated;
 }

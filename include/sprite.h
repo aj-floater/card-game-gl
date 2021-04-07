@@ -18,16 +18,17 @@ class Sprite{
     string name;
 
     // Animations
-    float internal_clock, distance;
-    bool animated, sound;
     vector<Animation> animation_queue;
+    bool animated = false;
+    float distance_travelled;
     void Move();
+    void Apply(Animation *animation);
 public:
     int ID;
     Shader shader;
     Position position;
-    Size size;
     int shuffle_position;
+    Size size;
 
     static float delta_time, previous_time;
 
@@ -39,7 +40,7 @@ public:
 
     bool IsAnimated();
     void GoTo(Position target_position, float time);
-    void GoTo(Position target_position, float time, bool play_sound);
+    void GoTo(Position target_position, float time, string sound);
 
     void ChangeSize(Size size);
     void ChangeSize(float size);

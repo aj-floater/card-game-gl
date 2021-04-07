@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 float RandomFloat(float a, float b);
 
@@ -34,8 +35,8 @@ public:
     Position(const Position &p){
         this->x = p.x; this->y = p.y;
     }  
-    std::string returnString(){
-        return "x: " + std::to_string(x) + ", y: " + std::to_string(y);
+    void out(){
+        std::cout << "x: " + std::to_string(x) + ", y: " + std::to_string(y) << std::endl;
     }
     bool operator==(const Position &p){
         if (this->x == p.x && this->y == p.y)

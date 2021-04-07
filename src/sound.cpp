@@ -17,8 +17,17 @@ void InitMoveMultipleCardsSound(){
     SoundManager::AddSounds(filenames, "move_multiple_cards");
 }
 
+void InitCardFlip(){
+    vector<string> filenames;
+    for (int i = 0; i < 8; i++)
+        filenames.push_back("audio/CardMovement/Flick/" + to_string(i) + ".wav");
+    SoundManager::AddSounds(filenames, "flick_temp");
+}
+
 void SoundManager::Init(){
     InitMoveMultipleCardsSound();
     InitMoveCardSound();
+    InitCardFlip();
     SoundManager::AddSound("audio/CardMovement/CardScrape.wav", "scrape");
+    SoundManager::AddSound("audio/CardMovement/Flick.wav", "flick");
 }

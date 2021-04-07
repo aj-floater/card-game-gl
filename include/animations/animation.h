@@ -5,19 +5,20 @@
 class Animation{
 public:
     Position target_position, delta_position;
-    float distance;
-    float time;
-    bool started;
+    float distance, time;
+    bool applied;
+    std::string sound;
 
     Animation(Position target_position, float time){
         this->target_position = target_position;
         this->time = time;
-        this->started = false;
+        applied = false;
+        this->sound = "";
     }
-
-    void CalculateDeltaPosition(Position position){
-        delta_position = Position((target_position.x-position.x)/time, (target_position.y-position.y)/time);
-        this->distance = abs(sqrt(pow(target_position.x-position.x, 2) + pow(target_position.x-position.x, 2)));
-        // cout << distance << endl;
+    Animation(Position target_position, float time, std::string sound){
+        this->target_position = target_position;
+        this->time = time;
+        applied = false;
+        this->sound = sound;
     }
 };

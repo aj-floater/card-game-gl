@@ -27,11 +27,11 @@ void AnimationManager::ShuffleOneCard(float timeToTake){
     int pos1 = rand() % 30;
     int pos2 = rand() % 30;
     // Move card from position 1 to just below position 2
-    cards[pos1].GoTo(Position(cards[pos1].position.x, cards[pos1].position.y-0.2), time/4, false);
-    cards[pos1].GoTo(Position(cards[pos2].position.x, cards[pos2].position.y-0.2), time/4, false);
-    cards[pos1].GoTo(Position(cards[pos2].position.x, cards[pos2].position.y), time/4, false);
-    SoundManager::PlaySound("scrape", RandomFloat(10, 25));
-    SoundManager::PlaySound("move_card", RandomFloat(10, 25));
+    cards[pos1].GoTo(Position(cards[pos1].position.x, cards[pos1].position.y-0.2), time/4);
+    cards[pos1].GoTo(Position(cards[pos2].position.x, cards[pos2].position.y-0.2), time/4);
+    cards[pos1].GoTo(Position(cards[pos2].position.x, cards[pos2].position.y), time/4);
+    SoundManager::PlaySound("scrape");
+    SoundManager::PlaySound("move_card");
     MoveCard(pos1, pos2);
 }
 
@@ -45,16 +45,16 @@ void AnimationManager::MoveChunkBetweenPositions(float position_1, float positio
     if (position_1 > position_2){
         for (int i = position_1; i > position_2; i--){
             cards[i] = cards[i-1];
-            cards[i].GoTo(Position(cards[i].position.x+0.0475, cards[i].position.y), time, false);
+            cards[i].GoTo(Position(cards[i].position.x+0.0475, cards[i].position.y), time);
         }
     }
     if (position_1 < position_2){
         for (int i = position_1; i < position_2; i++){
             cards[i] = cards[i+1];
-            cards[i].GoTo(Position(cards[i].position.x-0.0475, cards[i].position.y), time, false);
+            cards[i].GoTo(Position(cards[i].position.x-0.0475, cards[i].position.y), time);
         }
     }
-    SoundManager::PlaySound("move_multiple_cards", RandomFloat(75, 100));
+    SoundManager::PlaySound("move_card");
 }
 
 void AnimationManager::PlayShuffleAnimation(){
@@ -63,11 +63,11 @@ void AnimationManager::PlayShuffleAnimation(){
         float speed = 0.1;
         for(Sprite &card : cards){
             if (shufflepos <= 0 && card.shuffle_position <= 0 && !card.IsAnimated()){
-                card.GoTo(Position(-0.75, 0.6), 0.5, false);
+                card.GoTo(Position(-0.75, 0.6), 0.5);
             }
             if(shufflepos == 1 && card.shuffle_position == 1 && !card.IsAnimated()){
-                card.GoTo(Position(-0.75+movement, 0.6), speed);
-                movement += 0.0475;
+                card.GoTo(Position(-0.75+movement, 0.6), speed, "flick");
+                movement += 0.051;
                 speed += 0.05;
             }
         }
@@ -75,7 +75,7 @@ void AnimationManager::PlayShuffleAnimation(){
             if (shufflepos == 2 && AreAllCardsAnimated()){
                 if (j < 30){
                     ShuffleOneCard(RandomFloat(0.1, 0.15));
-                    for (Sprite &card : cards) if (card.position.y < 0.5) card.GoTo(Position(card.position.x, 0.6), 0.1, false);
+                    for (Sprite &card : cards) if (card.position.y < 0.5) card.GoTo(Position(card.position.x, 0.6), 0.1);
                     j++;
                 }
                 else {
