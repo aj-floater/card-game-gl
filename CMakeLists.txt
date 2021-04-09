@@ -13,16 +13,6 @@ add_executable(Card_Game ${SOURCES})
 file(GLOB LIBRARIES "lib/*.dylib")
 message("LIBRARIES = ${LIBRARIES}")
 
-# external resources    --------------------------------------------
-file(GLOB GLSL_FILES "shaders/*.glsl")
-file(COPY ${GLSL_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-file(GLOB AUDIO_FILES "audio/*.wav" "audio/*.m4a")
-file(COPY ${AUDIO_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-file(GLOB IMAGE_FILES "images/*.png" "images/*.jpg")
-file(COPY ${IMAGE_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
 target_link_libraries(Card_Game
     OpenGL::GL
     glfw

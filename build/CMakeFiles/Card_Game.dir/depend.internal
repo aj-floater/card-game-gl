@@ -243,6 +243,8 @@ CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o
 CMakeFiles/Card_Game.dir/src/main.cpp.o
  ../include/animations/animation.h
  ../include/animations/animation_manager.h
+ ../include/game.h
+ ../include/keys.h
  ../include/shader.h
  ../include/sound.h
  ../include/sprite.h

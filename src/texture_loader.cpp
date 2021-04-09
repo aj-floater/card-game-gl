@@ -28,6 +28,23 @@ void TextureLoader::load(const char *filename, string name){
     Textures[name] = texture;
 }
 
+void TextureLoader::Init(){
+    TextureLoader::load("./images/card-front-black.png", "0");
+    TextureLoader::load("./images/card-front-red.png", "1");
+    TextureLoader::load("./images/card-front-yellow.png", "2");
+    TextureLoader::load("./images/card-back.png", "card-back");
+    for (int i = 0; i < 30; i++){
+        int colour_num = (i - i % 10) / 10;
+        string filename, colour;
+        if (colour_num == 0) colour = "R";
+        if (colour_num == 1) colour = "Y";
+        if (colour_num == 2) colour = "B";
+        filename = colour + "-" + to_string(i % 10);
+        string filepath = "./images/cards/" + colour + "/" + filename + ".png";
+        TextureLoader::load(filepath.c_str(), filename);
+    }
+}
+
 unsigned int TextureLoader::get(string name){
     return Textures[name];
 }

@@ -15,7 +15,6 @@ using namespace std;
 
 class Sprite{
     unsigned int VBO, VAO, EBO;
-    string name;
 
     // Animations
     vector<Animation> animation_queue;
@@ -24,7 +23,10 @@ class Sprite{
     void Move();
     void Apply(Animation *animation);
 public:
-    int ID;
+    string colour;
+    int number;
+    bool flipped;
+
     Shader shader;
     Position position;
     int shuffle_position;
@@ -33,7 +35,7 @@ public:
     static float delta_time, previous_time;
 
     Sprite(){}
-    Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string name);
+    Sprite(const char* vertexshaderpath, const char* fragmentshaderpath);
 
     void Update();
     void Draw();

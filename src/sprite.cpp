@@ -2,8 +2,7 @@
 
 float Sprite::previous_time, Sprite::delta_time;
 
-Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string sprite_name){
-    this->name = sprite_name;
+Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath){
     this->shader.create(vertexshaderpath, fragmentshaderpath);
 
     position = 0;
@@ -44,8 +43,6 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
 
     glBindVertexArray(0);
-
-    TextureLoader::load(filename, name);
 }
 
 void Sprite::Draw(){
@@ -57,9 +54,13 @@ void Sprite::Draw(){
     unsigned int transformLoc = glGetUniformLocation(this->shader.shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
-    glBindTexture(GL_TEXTURE_2D, TextureLoader::get(this->name));
-    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-    //glDrawArrays(GL_TRIANGLES, 0, 6);
+    string texture_name;
+    if (flipped)
+        texture_name = colour + "-" + to_string(number);
+    else
+        texture_name = "card-back";
+    glBindTexture(GL_TEXTURE_2D, TextureLoader::get(texture_name));
+    glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
