@@ -29,9 +29,6 @@ void TextureLoader::load(const char *filename, string name){
 }
 
 void TextureLoader::Init(){
-    TextureLoader::load("./images/card-front-black.png", "0");
-    TextureLoader::load("./images/card-front-red.png", "1");
-    TextureLoader::load("./images/card-front-yellow.png", "2");
     TextureLoader::load("./images/card-back.png", "card-back");
     for (int i = 0; i < 30; i++){
         int colour_num = (i - i % 10) / 10;

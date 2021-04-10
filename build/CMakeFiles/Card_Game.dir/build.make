@@ -89,9 +89,22 @@ CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/archiejames/Desktop/cardgame/src/animations/animation_manager.cpp -o CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.s
 
+CMakeFiles/Card_Game.dir/src/game.cpp.o: CMakeFiles/Card_Game.dir/flags.make
+CMakeFiles/Card_Game.dir/src/game.cpp.o: ../src/game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Card_Game.dir/src/game.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/game.cpp.o -c /Users/archiejames/Desktop/cardgame/src/game.cpp
+
+CMakeFiles/Card_Game.dir/src/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Card_Game.dir/src/game.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/archiejames/Desktop/cardgame/src/game.cpp > CMakeFiles/Card_Game.dir/src/game.cpp.i
+
+CMakeFiles/Card_Game.dir/src/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Card_Game.dir/src/game.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/archiejames/Desktop/cardgame/src/game.cpp -o CMakeFiles/Card_Game.dir/src/game.cpp.s
+
 CMakeFiles/Card_Game.dir/src/main.cpp.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Card_Game.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Card_Game.dir/src/main.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/main.cpp.o -c /Users/archiejames/Desktop/cardgame/src/main.cpp
 
 CMakeFiles/Card_Game.dir/src/main.cpp.i: cmake_force
@@ -104,7 +117,7 @@ CMakeFiles/Card_Game.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/Card_Game.dir/src/sound.cpp.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/sound.cpp.o: ../src/sound.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Card_Game.dir/src/sound.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Card_Game.dir/src/sound.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/sound.cpp.o -c /Users/archiejames/Desktop/cardgame/src/sound.cpp
 
 CMakeFiles/Card_Game.dir/src/sound.cpp.i: cmake_force
@@ -117,7 +130,7 @@ CMakeFiles/Card_Game.dir/src/sound.cpp.s: cmake_force
 
 CMakeFiles/Card_Game.dir/src/sprite.cpp.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/sprite.cpp.o: ../src/sprite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Card_Game.dir/src/sprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Card_Game.dir/src/sprite.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/sprite.cpp.o -c /Users/archiejames/Desktop/cardgame/src/sprite.cpp
 
 CMakeFiles/Card_Game.dir/src/sprite.cpp.i: cmake_force
@@ -128,9 +141,22 @@ CMakeFiles/Card_Game.dir/src/sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Card_Game.dir/src/sprite.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/archiejames/Desktop/cardgame/src/sprite.cpp -o CMakeFiles/Card_Game.dir/src/sprite.cpp.s
 
+CMakeFiles/Card_Game.dir/src/stb_image.cpp.o: CMakeFiles/Card_Game.dir/flags.make
+CMakeFiles/Card_Game.dir/src/stb_image.cpp.o: ../src/stb_image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Card_Game.dir/src/stb_image.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/stb_image.cpp.o -c /Users/archiejames/Desktop/cardgame/src/stb_image.cpp
+
+CMakeFiles/Card_Game.dir/src/stb_image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Card_Game.dir/src/stb_image.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/archiejames/Desktop/cardgame/src/stb_image.cpp > CMakeFiles/Card_Game.dir/src/stb_image.cpp.i
+
+CMakeFiles/Card_Game.dir/src/stb_image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Card_Game.dir/src/stb_image.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/archiejames/Desktop/cardgame/src/stb_image.cpp -o CMakeFiles/Card_Game.dir/src/stb_image.cpp.s
+
 CMakeFiles/Card_Game.dir/src/structures.cpp.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/structures.cpp.o: ../src/structures.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Card_Game.dir/src/structures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Card_Game.dir/src/structures.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/structures.cpp.o -c /Users/archiejames/Desktop/cardgame/src/structures.cpp
 
 CMakeFiles/Card_Game.dir/src/structures.cpp.i: cmake_force
@@ -143,7 +169,7 @@ CMakeFiles/Card_Game.dir/src/structures.cpp.s: cmake_force
 
 CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o: ../src/texture_loader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o -c /Users/archiejames/Desktop/cardgame/src/texture_loader.cpp
 
 CMakeFiles/Card_Game.dir/src/texture_loader.cpp.i: cmake_force
@@ -156,7 +182,7 @@ CMakeFiles/Card_Game.dir/src/texture_loader.cpp.s: cmake_force
 
 CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o: CMakeFiles/Card_Game.dir/flags.make
 CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o: ../src/third_parties/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o -c /Users/archiejames/Desktop/cardgame/src/third_parties/glad.c
 
 CMakeFiles/Card_Game.dir/src/third_parties/glad.c.i: cmake_force
@@ -170,9 +196,11 @@ CMakeFiles/Card_Game.dir/src/third_parties/glad.c.s: cmake_force
 # Object files for target Card_Game
 Card_Game_OBJECTS = \
 "CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o" \
+"CMakeFiles/Card_Game.dir/src/game.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/main.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/sound.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/sprite.cpp.o" \
+"CMakeFiles/Card_Game.dir/src/stb_image.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/structures.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o" \
 "CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o"
@@ -181,9 +209,11 @@ Card_Game_OBJECTS = \
 Card_Game_EXTERNAL_OBJECTS =
 
 Card_Game: CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o
+Card_Game: CMakeFiles/Card_Game.dir/src/game.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/main.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/sound.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/sprite.cpp.o
+Card_Game: CMakeFiles/Card_Game.dir/src/stb_image.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/structures.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o
 Card_Game: CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o
@@ -193,7 +223,7 @@ Card_Game: /usr/local/lib/libglfw.3.3.dylib
 Card_Game: ../lib/libikpMP3.dylib
 Card_Game: ../lib/libirrklang.dylib
 Card_Game: CMakeFiles/Card_Game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Card_Game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Card_Game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Card_Game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

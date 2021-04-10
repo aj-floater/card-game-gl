@@ -14,7 +14,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -29,7 +30,8 @@
 					"name" : "Card_Game",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,8 +40,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Card_Game::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Card_Game-Debug-5105282ddb541e5a9775.json",
+					"jsonFile" : "target-Card_Game-Debug-db764ffc033563228162.json",
 					"name" : "Card_Game",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "libs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-libs-Debug-db9a470f21804be47c30.json",
+					"name" : "libs",
 					"projectIndex" : 0
 				}
 			]

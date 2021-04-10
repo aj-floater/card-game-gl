@@ -19,7 +19,7 @@ class Sprite{
     // Animations
     vector<Animation> animation_queue;
     bool animated = false;
-    float distance_travelled;
+    float distance_travelled, time;
     void Move();
     void Apply(Animation *animation);
 public:
@@ -29,10 +29,8 @@ public:
 
     Shader shader;
     Position position;
-    int shuffle_position;
+    int animation_position;
     Size size;
-
-    static float delta_time, previous_time;
 
     Sprite(){}
     Sprite(const char* vertexshaderpath, const char* fragmentshaderpath);
@@ -43,6 +41,7 @@ public:
     bool IsAnimated();
     void GoTo(Position target_position, float time);
     void GoTo(Position target_position, float time, string sound);
+    void Wait(float time);
 
     void ChangeSize(Size size);
     void ChangeSize(float size);

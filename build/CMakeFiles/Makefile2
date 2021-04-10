@@ -72,6 +72,7 @@ CMAKE_BINARY_DIR = /Users/archiejames/Desktop/cardgame/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/libs.dir/all
 all: CMakeFiles/Card_Game.dir/all
 
 .PHONY : all
@@ -82,9 +83,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/libs.dir/clean
 clean: CMakeFiles/Card_Game.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/libs.dir
+
+# All Build rule for target.
+CMakeFiles/libs.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=11,12 "Built target libs"
+.PHONY : CMakeFiles/libs.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/libs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/archiejames/Desktop/cardgame/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/libs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/archiejames/Desktop/cardgame/build/CMakeFiles 0
+.PHONY : CMakeFiles/libs.dir/rule
+
+# Convenience name for target.
+libs: CMakeFiles/libs.dir/rule
+
+.PHONY : libs
+
+# clean rule for target.
+CMakeFiles/libs.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/clean
+.PHONY : CMakeFiles/libs.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Card_Game.dir
@@ -93,12 +122,12 @@ clean: CMakeFiles/Card_Game.dir/clean
 CMakeFiles/Card_Game.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Card_Game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/archiejames/Desktop/cardgame/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target Card_Game"
 .PHONY : CMakeFiles/Card_Game.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Card_Game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/archiejames/Desktop/cardgame/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/archiejames/Desktop/cardgame/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Card_Game.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/archiejames/Desktop/cardgame/build/CMakeFiles 0
 .PHONY : CMakeFiles/Card_Game.dir/rule

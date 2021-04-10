@@ -1,6 +1,5 @@
 #include "sprite.h"
-
-float Sprite::previous_time, Sprite::delta_time;
+#include "game.h"
 
 Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath){
     this->shader.create(vertexshaderpath, fragmentshaderpath);
@@ -99,14 +98,14 @@ void Sprite::Apply(Animation *animation){
         animation->distance = abs(sqrt(pow(animation->target_position.x - position.x, 2) + pow(animation->target_position.y - position.y, 2)));
         animation->applied = true;
     }
-    position.x += animation->delta_position.x/animation->time * delta_time;
-    position.y += animation->delta_position.y/animation->time * delta_time;
-    distance_travelled += abs(sqrt(pow(animation->delta_position.x/animation->time * delta_time, 2) + pow(animation->delta_position.y/animation->time * delta_time, 2)));
+    position.x += animation->delta_position.x/animation->time * Game::delta_time;
+    position.y += animation->delta_position.y/animation->time * Game::delta_time;
+    distance_travelled += abs(sqrt(pow(animation->delta_position.x/animation->time * Game::delta_time, 2) + pow(animation->delta_position.y/animation->time * Game::delta_time, 2)));
     if (distance_travelled >= animation->distance){
         position.x = animation->target_position.x;
         position.y = animation->target_position.y;
         distance_travelled = 0;
-        shuffle_position++;
+        animation_position++;
         if (animation->sound != "") SoundManager::PlaySound(animation->sound);
         animation_queue.erase(animation_queue.begin());
     }
@@ -117,6 +116,10 @@ void Sprite::GoTo(Position target_position, float time, string sound){
 }
 void Sprite::GoTo(Position target_position, float time){
     animation_queue.push_back(Animation(target_position, time));
+}
+
+void Sprite::Wait(float time){
+    animation_queue.push_back(Animation(time));
 }
 
 bool Sprite::IsAnimated(){

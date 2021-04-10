@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o"
+  "CMakeFiles/Card_Game.dir/src/game.cpp.o"
   "CMakeFiles/Card_Game.dir/src/main.cpp.o"
   "CMakeFiles/Card_Game.dir/src/sound.cpp.o"
   "CMakeFiles/Card_Game.dir/src/sprite.cpp.o"
+  "CMakeFiles/Card_Game.dir/src/stb_image.cpp.o"
   "CMakeFiles/Card_Game.dir/src/structures.cpp.o"
   "CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o"
   "CMakeFiles/Card_Game.dir/src/third_parties/glad.c.o"

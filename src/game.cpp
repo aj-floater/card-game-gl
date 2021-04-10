@@ -1,5 +1,16 @@
 #include "game.h"
 
+// Variables    ------------------------------------------------------------------------------------
+
+Key Game::ENTER, Game::ESCAPE, Game::F, Game::E;
+
+std::vector<Sprite> Game::cards;
+std::vector<Sprite> Game::player_1_cards, Game::player_2_cards;
+
+GLFWwindow* Game::window;
+float Game::time, Game::delta_time, Game::previous_time; 
+int Game::fps;
+
 // Initializers ------------------------------------------------------------------------------------
 
 void Game::Init(){
@@ -16,6 +27,7 @@ void Game::Init(){
     ENTER.create(GLFW_KEY_ENTER);
     ESCAPE.create(GLFW_KEY_ESCAPE);
     F.create(GLFW_KEY_F);
+    E.create(GLFW_KEY_E);
 }
 
 // glfw: initialize glfw
@@ -94,16 +106,24 @@ void Game::RenderLoop(){
         glClearColor(0.8f, 0.8f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        Sprite::delta_time = glfwGetTime() - Sprite::previous_time;
-        Sprite::previous_time = glfwGetTime();
+        delta_time = glfwGetTime() - previous_time;
+        previous_time = glfwGetTime();
 
         AnimationManager::Update();
-
-        // card1.Update();
         
         for (Sprite &card : cards){
             card.Update();
         }
+
+        for (Sprite &card : player_1_cards){
+            card.Update();
+        }
+
+        for (Sprite &card : player_2_cards){
+            card.Update();
+        }
+
+        // OutputFPS();
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);
@@ -111,18 +131,63 @@ void Game::RenderLoop(){
     }
 }
 
-// Other Functions  ----------------------------------------------------------------------------
+// Window Settings  ----------------------------------------------------------------------------
 
 void Game::ProcessKeyInput(){
     if (ESCAPE.keyPressRelease(window)){
         glfwSetWindowShouldClose(window, true);
     }
     if (ENTER.keyPressRelease(window)){
-        AnimationManager::StartShuffleAnimation(true);
+        AnimationManager::StartShuffleAnimation();
+    }
+    if (E.keyPressRelease(window)){
+        AnimationManager::StartMoveAnimation();
     }
     if (F.keyPressRelease(window)){
-        for (Sprite &c : AnimationManager::cards){
+        for (Sprite &c : Game::cards){
             c.flipped = (c.flipped) ? false : true;
         }
     }
+}
+
+// FPS  ----------------------------------------------------------------------------------------
+
+void Game::OutputFPS(){
+    if (time <= 1){
+        time += delta_time;
+        fps += 1;
+    }
+    else {
+        cout << fps << endl;
+        time = 0;
+        fps = 0;
+    }
+}
+
+// Game Functions   ----------------------------------------------------------------------------
+
+int Game::Compare(Sprite player_1, Sprite player_2){
+    int who_wins = CompareColour(player_1.colour, player_2.colour);
+    if (who_wins == 0)
+        who_wins = (player_1.number > player_2.number) ? 1 : 2;
+    return who_wins;
+}
+
+int Game::CompareColour(std::string player_1_colour, std::string player_2_colour){
+    // Red + Black = Red
+    if (player_1_colour == "R" && player_2_colour == "B")
+        return 1;
+    if (player_2_colour == "R" && player_1_colour == "B")
+        return 2;
+    // Yellow + Red = Yellow
+    if (player_1_colour == "Y" && player_2_colour == "R")
+        return 1;
+    if (player_2_colour == "Y" && player_1_colour == "R")
+        return 2;
+    // Black + Yellow = Black
+    if (player_1_colour == "B" && player_2_colour == "Y")
+        return 1;
+    if (player_2_colour == "B" && player_1_colour == "Y")
+        return 2;
+    else return 0;
 }

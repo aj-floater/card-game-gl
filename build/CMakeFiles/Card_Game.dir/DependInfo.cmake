@@ -17,9 +17,11 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/archiejames/Desktop/cardgame/src/animations/animation_manager.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o"
+  "/Users/archiejames/Desktop/cardgame/src/game.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/game.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/main.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/main.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/sound.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/sound.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/sprite.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/sprite.cpp.o"
+  "/Users/archiejames/Desktop/cardgame/src/stb_image.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/stb_image.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/structures.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/structures.cpp.o"
   "/Users/archiejames/Desktop/cardgame/src/texture_loader.cpp" "/Users/archiejames/Desktop/cardgame/build/CMakeFiles/Card_Game.dir/src/texture_loader.cpp.o"
   )

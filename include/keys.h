@@ -7,7 +7,7 @@ private:
     bool keypressed;
     u_int32_t key;
 public:
-    Key();
+    Key(){}
     Key(u_int32_t key_code){
         create(key_code);
     }
