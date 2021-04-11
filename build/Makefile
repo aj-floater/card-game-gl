@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named libs
+
+# Build rule for target.
+libs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libs
+.PHONY : libs
+
+# fast build rule for target.
+libs/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/build
+.PHONY : libs/fast
+
+#=============================================================================
 # Target rules for targets named Card_Game
 
 # Build rule for target.
@@ -168,6 +181,33 @@ src/animations/animation_manager.s: src/animations/animation_manager.cpp.s
 src/animations/animation_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.s
 .PHONY : src/animations/animation_manager.cpp.s
+
+src/game.o: src/game.cpp.o
+
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -249,6 +289,36 @@ src/sprite.s: src/sprite.cpp.s
 src/sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/sprite.cpp.s
 .PHONY : src/sprite.cpp.s
+
+src/stb_image.o: src/stb_image.cpp.o
+
+.PHONY : src/stb_image.o
+
+# target to build an object file
+src/stb_image.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/src/stb_image.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/stb_image.cpp.o
+.PHONY : src/stb_image.cpp.o
+
+src/stb_image.i: src/stb_image.cpp.i
+
+.PHONY : src/stb_image.i
+
+# target to preprocess a source file
+src/stb_image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/src/stb_image.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/stb_image.cpp.i
+.PHONY : src/stb_image.cpp.i
+
+src/stb_image.s: src/stb_image.cpp.s
+
+.PHONY : src/stb_image.s
+
+# target to generate assembly for a file
+src/stb_image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/libs.dir/build.make CMakeFiles/libs.dir/src/stb_image.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Card_Game.dir/build.make CMakeFiles/Card_Game.dir/src/stb_image.cpp.s
+.PHONY : src/stb_image.cpp.s
 
 src/structures.o: src/structures.cpp.o
 
@@ -340,9 +410,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Card_Game"
+	@echo "... libs"
 	@echo "... src/animations/animation_manager.o"
 	@echo "... src/animations/animation_manager.i"
 	@echo "... src/animations/animation_manager.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -352,6 +426,9 @@ help:
 	@echo "... src/sprite.o"
 	@echo "... src/sprite.i"
 	@echo "... src/sprite.s"
+	@echo "... src/stb_image.o"
+	@echo "... src/stb_image.i"
+	@echo "... src/stb_image.s"
 	@echo "... src/structures.o"
 	@echo "... src/structures.i"
 	@echo "... src/structures.s"

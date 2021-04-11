@@ -1,9 +1,7 @@
 #include "sprite.h"
+#include "game.h"
 
-float Sprite::previous_time, Sprite::delta_time;
-
-Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string sprite_name){
-    this->name = sprite_name;
+Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath){
     this->shader.create(vertexshaderpath, fragmentshaderpath);
 
     position = 0;
@@ -44,8 +42,6 @@ Sprite::Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, con
     glBindBuffer(GL_ARRAY_BUFFER, 0); 
 
     glBindVertexArray(0);
-
-    TextureLoader::load(filename, name);
 }
 
 void Sprite::Draw(){
@@ -57,9 +53,13 @@ void Sprite::Draw(){
     unsigned int transformLoc = glGetUniformLocation(this->shader.shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
-    glBindTexture(GL_TEXTURE_2D, TextureLoader::get(this->name));
-    glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-    //glDrawArrays(GL_TRIANGLES, 0, 6);
+    string texture_name;
+    if (flipped)
+        texture_name = colour + "-" + to_string(number);
+    else
+        texture_name = "card-back";
+    glBindTexture(GL_TEXTURE_2D, TextureLoader::get(texture_name));
+    glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
@@ -98,14 +98,14 @@ void Sprite::Apply(Animation *animation){
         animation->distance = abs(sqrt(pow(animation->target_position.x - position.x, 2) + pow(animation->target_position.y - position.y, 2)));
         animation->applied = true;
     }
-    position.x += animation->delta_position.x/animation->time * delta_time;
-    position.y += animation->delta_position.y/animation->time * delta_time;
-    distance_travelled += abs(sqrt(pow(animation->delta_position.x/animation->time * delta_time, 2) + pow(animation->delta_position.y/animation->time * delta_time, 2)));
+    position.x += animation->delta_position.x/animation->time * Game::delta_time;
+    position.y += animation->delta_position.y/animation->time * Game::delta_time;
+    distance_travelled += abs(sqrt(pow(animation->delta_position.x/animation->time * Game::delta_time, 2) + pow(animation->delta_position.y/animation->time * Game::delta_time, 2)));
     if (distance_travelled >= animation->distance){
         position.x = animation->target_position.x;
         position.y = animation->target_position.y;
         distance_travelled = 0;
-        shuffle_position++;
+        animation_position++;
         if (animation->sound != "") SoundManager::PlaySound(animation->sound);
         animation_queue.erase(animation_queue.begin());
     }
@@ -116,6 +116,10 @@ void Sprite::GoTo(Position target_position, float time, string sound){
 }
 void Sprite::GoTo(Position target_position, float time){
     animation_queue.push_back(Animation(target_position, time));
+}
+
+void Sprite::Wait(float time){
+    animation_queue.push_back(Animation(time));
 }
 
 bool Sprite::IsAnimated(){

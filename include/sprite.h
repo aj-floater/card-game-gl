@@ -15,25 +15,25 @@ using namespace std;
 
 class Sprite{
     unsigned int VBO, VAO, EBO;
-    string name;
 
     // Animations
     vector<Animation> animation_queue;
     bool animated = false;
-    float distance_travelled;
+    float distance_travelled, time;
     void Move();
     void Apply(Animation *animation);
 public:
-    int ID;
+    string colour;
+    int number;
+    bool flipped;
+
     Shader shader;
     Position position;
-    int shuffle_position;
+    int animation_position;
     Size size;
 
-    static float delta_time, previous_time;
-
     Sprite(){}
-    Sprite(const char* vertexshaderpath, const char* fragmentshaderpath, const char *filename, string name);
+    Sprite(const char* vertexshaderpath, const char* fragmentshaderpath);
 
     void Update();
     void Draw();
@@ -41,6 +41,7 @@ public:
     bool IsAnimated();
     void GoTo(Position target_position, float time);
     void GoTo(Position target_position, float time, string sound);
+    void Wait(float time);
 
     void ChangeSize(Size size);
     void ChangeSize(float size);

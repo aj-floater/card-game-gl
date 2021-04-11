@@ -1,8 +1,18 @@
 [
 {
   "directory": "/Users/archiejames/Desktop/cardgame/build",
+  "command": "/usr/bin/clang++  -I/Users/archiejames/Desktop/cardgame/./include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu++11 -o CMakeFiles/libs.dir/src/stb_image.cpp.o -c /Users/archiejames/Desktop/cardgame/src/stb_image.cpp",
+  "file": "/Users/archiejames/Desktop/cardgame/src/stb_image.cpp"
+},
+{
+  "directory": "/Users/archiejames/Desktop/cardgame/build",
   "command": "/usr/bin/clang++  -I/Users/archiejames/Desktop/cardgame/./include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu++11 -o CMakeFiles/Card_Game.dir/src/animations/animation_manager.cpp.o -c /Users/archiejames/Desktop/cardgame/src/animations/animation_manager.cpp",
   "file": "/Users/archiejames/Desktop/cardgame/src/animations/animation_manager.cpp"
+},
+{
+  "directory": "/Users/archiejames/Desktop/cardgame/build",
+  "command": "/usr/bin/clang++  -I/Users/archiejames/Desktop/cardgame/./include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu++11 -o CMakeFiles/Card_Game.dir/src/game.cpp.o -c /Users/archiejames/Desktop/cardgame/src/game.cpp",
+  "file": "/Users/archiejames/Desktop/cardgame/src/game.cpp"
 },
 {
   "directory": "/Users/archiejames/Desktop/cardgame/build",
@@ -18,6 +28,11 @@
   "directory": "/Users/archiejames/Desktop/cardgame/build",
   "command": "/usr/bin/clang++  -I/Users/archiejames/Desktop/cardgame/./include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu++11 -o CMakeFiles/Card_Game.dir/src/sprite.cpp.o -c /Users/archiejames/Desktop/cardgame/src/sprite.cpp",
   "file": "/Users/archiejames/Desktop/cardgame/src/sprite.cpp"
+},
+{
+  "directory": "/Users/archiejames/Desktop/cardgame/build",
+  "command": "/usr/bin/clang++  -I/Users/archiejames/Desktop/cardgame/./include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/System/Library/Frameworks -isystem /usr/local/include -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -std=gnu++11 -o CMakeFiles/Card_Game.dir/src/stb_image.cpp.o -c /Users/archiejames/Desktop/cardgame/src/stb_image.cpp",
+  "file": "/Users/archiejames/Desktop/cardgame/src/stb_image.cpp"
 },
 {
   "directory": "/Users/archiejames/Desktop/cardgame/build",
